@@ -48,6 +48,7 @@ configurations {
 
 dependencies {
     testCompile "junit:junit:$junit_version"
+    compile "com.google.guava:guava:16+"
 
     // Corda dependencies.
     cordaCompile "$corda_core_release_group:corda-core:$corda_core_release_version"
@@ -57,6 +58,10 @@ dependencies {
 
     // CorDapp dependencies.
     cordapp project(":contracts")
+
+    cordapp "$corda_release_group:corda-finance-contracts:$corda_release_version"
+    cordapp "$corda_release_group:corda-finance-workflows:$corda_release_version"
+    cordapp "$corda_release_group:corda-confidential-identities:$corda_release_version"
 }
 
 task integrationTest(type: Test, dependsOn: []) {
